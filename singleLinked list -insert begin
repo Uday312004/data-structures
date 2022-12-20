@@ -1,0 +1,29 @@
+class Node:
+  def __init__(self,data):
+    self.data=data;
+    self.next=None;
+class SingleLinkedList:
+  def __init__(self):
+    self.head=None;
+  def insertbegin(self,newelement):
+    newNode=Node(newelement);
+    newNode.next=self.head;
+    self.head=newNode;
+  def display(self):
+    current=self.head;
+    if(self.head==None):
+      print("given Linked List is empty.");
+      return;
+    else:
+      print("elements of Single Linked List are:");
+      while(current!=None):
+        print(current.data);
+        current=current.next;
+b=input()
+c=input()
+d=input()
+a=SingleLinkedList();
+a.insertbegin(b);
+a.insertbegin(c);
+a.insertbegin(d);
+a.display()
