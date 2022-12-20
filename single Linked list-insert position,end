@@ -1,0 +1,57 @@
+class Node:
+  def __init__(self,data):
+    self.data=data
+    self.next=None
+class SingleLinkedList:
+  def __init__(self):
+    self.head=None
+  def addNode(self,data):
+    newNode=Node(data)
+    if self.head is None:
+      self.head=newNode
+      self.tail=newNode
+    else:
+      self.tail.next=newNode
+      self.tail=newNode
+  def insertatpos(self,data,n,j):
+    newNode=Node(data)
+    i=1
+    if j in range(i+1,n):
+      current=self.head
+      while i<j:
+        temp=current
+        current=current.next
+        i=i+1
+      newNode.next=current
+      temp.next=newNode
+    if j is 1:
+      a.insertbegin()
+    if j is n:
+      a.insertend()
+  def insertbegin(self,newElement):
+    newNode=Node(newElement)
+    newNode.next=self.head
+    self.head=newNode
+  def insertend(self,newElement):
+    newNode=node(newELement)
+    if self.head is None:
+      self.head=newNode
+    else:
+      current=self.head
+      while current.next is not none:
+        current=current.next
+      current.next=newNode
+  def display(self):
+    current=self.head
+    while current is not None:
+      print(current.data,end="->")
+      current=current.next
+    if current is None:
+      print("none")
+a=SingleLinkedList()
+a.addNode(10)
+a.addNode(20)
+a.addNode(30)
+a.insertatpos(40,5,2)
+a.insertatpos(50,5,3)
+a.display()
