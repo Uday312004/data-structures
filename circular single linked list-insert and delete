@@ -1,0 +1,57 @@
+class Node:
+  def __init__(self,data):
+    self.data=data
+    self.next=None
+class CircularSingleLinkedList:
+  def __init__(self):
+    self.head=Node(None)
+    self.tail=Node(None)
+    self.head.next=self.tail
+    self.tail.next=self.head
+  def addNode(self,data):
+    newNode=Node(data)
+    if self.head.data is None:
+      self.head=newNode
+      self.tail=newNode
+      newNode.next=self.head
+    else:
+      self.tail.next=newNode
+      self.tail=newNode
+      self.tail.next=self.head
+  def insertbegin(self,data):
+    newNode=Node(data)
+    newNode.next=self.head
+    self.head=newNode
+    current=self.tail
+    current.next=newNode
+  def insertend(self,data):
+    newNode=Node(data)
+    current=self.tail
+    current.next=newNode
+    newNode.next=self.head
+  def deletebegin(self):
+    if self.head is not self.tail:
+      self.head=self.head.next
+      self.tail.next=self.head
+    else:
+      self.head=None
+  def display(self):
+    current=self.head
+    while current.next is not self.head:
+      print(current.data,end='->')
+      current=current.next
+    print(current.data)
+  def deleteend(self):
+    current=self.head
+    while current.next is not self.tail:
+      current=current.next
+    self.tail=current
+    self.tail.next=self.head
+a=CircularSingleLinkedList()
+a.addNode(20)
+a.addNode(30)
+a.addNode(40)
+a.addNode(50)
+a.deletebegin()
+a.deleteend()
+a.display()
