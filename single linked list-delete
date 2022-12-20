@@ -1,0 +1,50 @@
+class Node:
+  def __init__(self,data):
+    self.data=data
+    self.next=None
+class SingleLinkedList():
+  def __init__(self):
+    self.head=None
+  def addNode(self,data):
+    newNode=Node(data)
+    if self.head is None:
+      self.head=newNode
+      self.tail=newNode
+    else:
+      self.tail.next=newNode
+      self.tail=newNode
+  def display(self):
+    current=self.head
+    while current is not None:
+      print(current.data,end="->")
+      current=current.next
+  def deletebegin(self):
+    current=self.head
+    self.head=current.next
+  def deleteend(self):
+    current=self.head
+    while current is not None:
+      current=current.next
+      current.next=None
+  def deleteatpos(self,n,j):
+    i=1
+    if j>i and j<n:
+      current=self.head
+      while i<j:
+        temp=current
+        current=current.next
+        i=i+1
+      temp.next=current.next
+      current.next=None
+    if j is 1:
+      a.deletebegin()
+    if j is n:
+      a.deleteend()
+a=SingleLinkedList()
+a.addNode(10)
+a.addNode(20)
+a.addNode(30)
+a.addNode(40)
+a.addNode(50)
+a.deleteatpos(5,2)
+a.display()
