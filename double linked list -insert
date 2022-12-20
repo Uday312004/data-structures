@@ -1,0 +1,50 @@
+class Node:
+  def __init__(self,data):
+    self.data=data
+    self.prev=None
+    self.next=None
+class DoubleLinkedList:
+  def __init__(self):
+    self.head=None
+    self.tail=None
+  def addNode(self,data):
+    newNode=Node(data)
+    if self.head is None:
+      self.head=newNode
+      self.tail=newNode
+    else:
+      self.tail.next=newNode
+      self.tail=newNode
+  def insertbegin(self,data):
+    newNode=Node(data)
+    newNode.next=self.head
+    self.head=newNode
+    self.head.prev=self.head.next.prev
+    newNode.prev=None
+  def insertend(self,data):
+    newNode=Node(data)
+    newNode.prev=self.tail
+    self.tail.next=newNode
+    newNode.next=None
+  def display(self):
+    current=self.head
+    while current is not None:
+      print(current.data)
+      current=current.next
+  def deletebegin(self):
+    current=self.head
+    self.head=current.next
+    current.next.prev=None
+  def deleteend(self):
+    current=self.tail
+    self.tail=current.prev
+    current.next=None
+a=DoubleLinkedList()
+a.addNode(10)
+a.addNode(20)
+a.addNode(30)
+a.insertbegin(40)
+a.insertend(50)
+a.deletebegin()
+a.deleteend()
+a.display()
