@@ -1,0 +1,53 @@
+# Queue using Array
+class QueueArray:
+    def __init__(self):
+         self.Q = []
+         self.size = 10
+         self.head = 1
+         self.tail = 1
+    def isempty(self):
+        if self.tail == self.head:
+           return True
+        return False
+    def isfull(self):
+        if self.head == self.tail+1:
+             return True
+        return False
+    def enqueue(self, item):
+        self.Q.append(item)
+        if self.tail == self.size:
+            self.tail = 1
+         else:
+            self.tail = self.tail+1
+    def dequeue(self):
+         ele = self.Q[0]
+         self.head = self.head+1
+         del(self.Q[0])
+         return ele
+   def peek(self):
+        return self.Q[-1]
+    def display(self):
+         print(self.Q[::-1])
+q = QueueArray()
+while True :
+    ch = int(input('\n 1.enqueue \n\n 2.dequeue \n\n 3.display \n\n 4.peek \n\n 5.exit \n '))
+    if ch is 1:
+        if(q.isfull()):
+            print('Q Overflow')
+        else:
+             item = int(input("enter ele"))
+             q.enqueue(item)
+         if ch is 2:
+             if(q.isempty()):
+             print('Q underflow')
+             else:
+                 print(q.dequeue())
+        if ch is 3:
+             if(q.isempty()):
+                  print('Q underflow')
+             else:
+                  print(q.display())
+        if ch is 4:
+            print(q.peek())
+        if ch is 5:
+            break
